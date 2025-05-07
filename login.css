@@ -1,0 +1,123 @@
+/* --- Estilos base (tu diseño actual) --- */
+body {
+    background: linear-gradient(135deg, #e0f2f7, #b2ebf2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* --- Efecto Holográfico para el botón "Ingresar" --- */
+.hologram-btn {
+    position: relative;
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid rgba(0, 200, 255, 0.6) !important;
+    background: rgba(0, 120, 255, 0.2) !important;
+    color: hwb(251 0% 43%) !important;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 15px rgba(0, 200, 255, 0.5);
+    box-shadow: 
+        0 0 10px rgba(0, 180, 255, 0.4),
+        inset 0 0 8px rgba(0, 255, 255, 0.2);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+/* Línea de escaneo holográfica */
+.hologram-btn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(81, 16, 177, 0.8),
+        transparent
+    );
+    top: 0;
+    left: 0;
+    animation: scan 3s linear infinite;
+    filter: blur(0.5px);
+}
+
+/* Efectos al pasar el mouse */
+.hologram-btn:hover {
+    background: rgba(0, 150, 255, 0.3) !important;
+    text-shadow: 
+        0 0 12px #fff,
+        0 0 20px rgba(0, 220, 255, 0.8),
+        0 0 30px rgba(0, 100, 255, 0.6);
+    box-shadow: 
+        0 0 20px rgba(0, 200, 255, 0.7),
+        inset 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Efecto "glitch" en el texto al hacer hover */
+.hologram-btn:hover span {
+    position: relative;
+    display: inline-block;
+}
+
+.hologram-btn:hover span::before,
+.hologram-btn:hover span::after {
+    content: "Ingresar";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0.7;
+    filter: blur(0.8px);
+}
+
+.hologram-btn:hover span::before {
+    top: -1px;
+    color: #ff66ff;
+    animation: glitch-text 1s infinite;
+}
+
+.hologram-btn:hover span::after {
+    bottom: -1px;
+    color: #66ffff;
+    animation: glitch-text 1s infinite reverse;
+}
+
+/* Animaciones */
+@keyframes scan {
+    0% { top: -10%; opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { top: 110%; opacity: 0.5; }
+}
+
+@keyframes glitch-text {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+}
